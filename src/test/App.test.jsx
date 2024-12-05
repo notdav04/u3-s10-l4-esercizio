@@ -6,7 +6,7 @@ import BookList from "../components/BookList";
 import CommentArea from "../components/CommentArea";
 import App from "../App";
 import SingleBook from "../components/SingleBook";
-
+//1
 describe("verifica il corretto montaggio del componente welcome", () => {
   it("verifica la presenza del titolo", () => {
     render(<Welcome />);
@@ -19,7 +19,7 @@ describe("verifica il corretto montaggio del componente welcome", () => {
     expect(alert).toBeInTheDocument();
   });
 });
-
+//2
 describe("verifica che vengano create tante card quanti sono i libri  in fantasy", () => {
   it("verifica n°card", async () => {
     render(<BookList books={fantasy} />);
