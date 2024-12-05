@@ -20,13 +20,13 @@ describe("verifica il corretto montaggio del componente welcome", () => {
   });
 });
 
-// describe("verifica che vengano create tante card quanti sono i libri  in fantasy", () => {
-//   it("verifica n°card", async () => {
-//     render(<BookList />);
-//     const cards = await screen.queryAllByRole("img");
-//     expect(cards.length).toBe(fantasy.length);
-//   });
-// });
+describe("verifica che vengano create tante card quanti sono i libri  in fantasy", () => {
+  it("verifica n°card", async () => {
+    render(<BookList books={fantasy} />);
+    const cards = await screen.queryAllByRole("img");
+    expect(cards.length).toBe(fantasy.length);
+  });
+});
 
 //3
 describe("verifica che il componente CommentArea venga montato correttamente ", () => {
