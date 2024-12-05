@@ -1,48 +1,49 @@
-import { useEffect, useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { useEffect, useState } from "react";
+import { Button, Form } from "react-bootstrap";
 
 const AddComment = ({ asin }) => {
   const [comment, setComment] = useState({
-    comment: '',
+    comment: "",
     rate: 1,
-    elementId: null,
-  })
+    elementId: null
+  });
 
   useEffect(() => {
     setComment((c) => ({
       ...c,
-      elementId: asin,
-    }))
-  }, [asin])
+      elementId: asin
+    }));
+  }, [asin]);
 
   const sendComment = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       let response = await fetch(
-        'https://striveschool-api.herokuapp.com/api/comments',
+        "https://striveschool-api.herokuapp.com/api/comments",
         {
-          method: 'POST',
+          method: "POST",
           body: JSON.stringify(comment),
           headers: {
-            'Content-type': 'application/json',
-            Authorization: 'Bearer inserisci-qui-il-tuo-token',
-          },
+            "Content-type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM3MTY2NzhhZDEyOTAwMTU4NzZiZTEiLCJpYXQiOjE3MzMzMjIyODQsImV4cCI6MTczNDUzMTg4NH0.58kV_f_C_TfVnIHqQDEkrtb4W2feixjwxLRnUULRkSI"
+          }
         }
-      )
+      );
       if (response.ok) {
-        alert('Recensione inviata!')
+        alert("Recensione inviata!");
         setComment({
-          comment: '',
+          comment: "",
           rate: 1,
-          elementId: null,
-        })
+          elementId: null
+        });
       } else {
-        throw new Error('Qualcosa è andato storto')
+        throw new Error("Qualcosa è andato storto");
       }
     } catch (error) {
-      alert(error)
+      alert(error);
     }
-  }
+  };
 
   return (
     <div className="my-3">
@@ -56,7 +57,7 @@ const AddComment = ({ asin }) => {
             onChange={(e) =>
               setComment({
                 ...comment,
-                comment: e.target.value,
+                comment: e.target.value
               })
             }
           />
@@ -69,7 +70,7 @@ const AddComment = ({ asin }) => {
             onChange={(e) =>
               setComment({
                 ...comment,
-                rate: e.target.value,
+                rate: e.target.value
               })
             }
           >
@@ -85,7 +86,7 @@ const AddComment = ({ asin }) => {
         </Button>
       </Form>
     </div>
-  )
-}
+  );
+};
 
-export default AddComment
+export default AddComment;
